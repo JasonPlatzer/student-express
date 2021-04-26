@@ -59,10 +59,12 @@ export default {
         editTable: false
       }
       },
-      computed(){
+      computed:
+      { sortedStudents(){
         // from https://www.codegrepper.com/code-examples/javascript/vue+sort+array+of+objects
-        let sortedStudents = students.sort((a,b) => (a.starID > b.starID ? 1: -1))
-          return sortedStudents      
+        let sortedStudents = this.students.sort((a,b) => (a.starID > b.starID ? 1: -1))
+          return sortedStudents
+      }      
       },
      methods: {  // present is from $event.target.present tells if student is present
       arrivedOrLeft(student, present){
