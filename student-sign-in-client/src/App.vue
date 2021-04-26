@@ -6,7 +6,7 @@
    <new-student-form v-on:student-added="newStudentAdded"></new-student-form>
    <!-- binds with students from StudentTable-->
    <student-table v-bind:students="students" v-on:student-arrived-or-left="studentArrivedOrLeft" 
-   v-on:delete-student="studentDeleted">
+   v-on:delete-student="studentDeleted" >
    </student-table>
   <!-- student is prop in student message-->
    <student-message v-bind:student="mostRecentStudent"></student-message> 
@@ -27,7 +27,7 @@ export default {
     return{
       students: [],
       mostRecentStudent: {}
-
+    
     }
   },
   components: {

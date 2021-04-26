@@ -6,7 +6,7 @@ let Student = db.Student
 let router = express.Router()
 // a request to students will run the function
 router.get('/students', function(req, res, next){
-    Student.findAll( {order: ['present', 'name']}).then(students =>{
+    Student.findAll( {order: ['starID']}).then(students =>{
         //converts to json
         return res.json(students)
         //if error sends to server.js to handle

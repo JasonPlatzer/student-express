@@ -17,7 +17,7 @@
                     </tr>
 
                     <!-- student from props is bound to student in v-for--><!-- v-on sends event data to App.vue to update--> 
-                     <student-row v-for='student in students' v-bind:student="student" 
+                     <student-row v-for='student in sortedStudents' v-bind:student="student" 
                      v-bind:key="student.starID" 
                      v-on:student-arrived-or-left="arrivedOrLeft" 
                      v-on:delete-student="deleteStudent"
@@ -46,17 +46,23 @@ export default {
   // components lets StudentTable know it has a StudentRow as a component
   components: {
     StudentRow
+    
 
   },
   // emits verifies it was sent to parent
   emits:['student-arrived-or-left'],
   props: {
-    students: Array
+    students: Array,
     },
     data(){
       return{
         editTable: false
       }
+      },
+      computed(){
+        // from https://www.codegrepper.com/code-examples/javascript/vue+sort+array+of+objects
+        let sortedStudents = students.sort((a,b) => (a.starID > b.starID ? 1: -1))
+          return sortedStudents      
       },
      methods: {  // present is from $event.target.present tells if student is present
       arrivedOrLeft(student, present){
